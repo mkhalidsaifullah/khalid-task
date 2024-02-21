@@ -1,11 +1,11 @@
 import React from "react";
 
-const Label = ({user}) => {
+const Label = ({ labelText }) => {
   return (
     <>
-      <p>Hi, My name is</p>
+      <p>{labelText.firstLine}</p>
       <h1>
-        {user.name.first} {user.name.last}
+      {labelText.secondLine}
       </h1>
     </>
   );

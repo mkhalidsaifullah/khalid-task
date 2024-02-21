@@ -4,12 +4,25 @@ import Icon from "./Icon";
 const Icons = ({ setIcon }) => {
   return (
     <>
-      <button onClick={setIcon("name")}>Name</button>
-      <button onClick={setIcon("email")}>email</button>
-      <button onClick={setIcon("dob")}>Date of Birth</button>
-      <button onClick={setIcon("loc")}>Location</button>
-      <button onClick={setIcon("phn")}>Contact</button>
-      <button onClick={setIcon("pas")}>password</button>
+      <button onClick={setIcon("avatar")}>
+        {" "}
+        <img src="/Icons/avatar" alt="avatar" />
+      </button>
+      <button onClick={setIcon("email")}>
+        <img src="/Icons/email" alt="email" />
+      </button>
+      <button onClick={setIcon("dob")}>
+        <img src="/Icons/calendar" alt="calendar" />
+      </button>
+      <button onClick={setIcon("map")}>
+        <img src="/Icons/map" alt="map" />
+      </button>
+      <button onClick={setIcon("phn")}>
+        <img src="/Icons/phone" alt="phone" />
+      </button>
+      <button onClick={setIcon("loc")}>
+        <img src="/Icons/lock" alt="lock" />
+      </button>
     </>
   );
 };
