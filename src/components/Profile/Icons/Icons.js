@@ -1,30 +1,30 @@
-import React from "react";
-import Icon from "./Icon";
-
-const Icons = ({ setIcon }) => {
+import "./Icons.css";
+const Icons = ({ setCurrentIcon }) => {
   return (
     <>
-      <button onClick={setIcon("avatar")}>
-        {" "}
-        <img src="/Icons/avatar" alt="avatar" />
-      </button>
-      <button onClick={setIcon("email")}>
-        <img src="/Icons/email" alt="email" />
-      </button>
-      <button onClick={setIcon("dob")}>
-        <img src="/Icons/calendar" alt="calendar" />
-      </button>
-      <button onClick={setIcon("map")}>
-        <img src="/Icons/map" alt="map" />
-      </button>
-      <button onClick={setIcon("phn")}>
-        <img src="/Icons/phone" alt="phone" />
-      </button>
-      <button onClick={setIcon("loc")}>
-        <img src="/Icons/lock" alt="lock" />
-      </button>
+      <div className="icons-butn">
+        <button onClick={() => setCurrentIcon("avatar")}>
+          <img src="Icons/avatar.svg" alt="avatar" />
+        </button>
+        <button onClick={() => setCurrentIcon("email")}>
+          <img src="Icons/email.svg" alt="email" />
+        </button>
+        <button onClick={() => setCurrentIcon("dob")}>
+          <img src="Icons/calendar.svg" alt="calendar" />
+        </button>
+        <button onClick={() => setCurrentIcon("map")}>
+          <img src="Icons/map.svg" alt="map" />
+        </button>
+        <button onClick={() => setCurrentIcon("phn")}>
+          <img src="Icons/phone.svg" alt="phone" />
+        </button>
+        <button onClick={() => setCurrentIcon("loc")}>
+          <img src="Icons/lock.svg" alt="lock" />
+        </button>
+      </div>
     </>
   );
 };
 
 export default Icons;
+

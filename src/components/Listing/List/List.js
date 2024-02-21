@@ -1,13 +1,11 @@
-// src/components/UserList.js
-import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { Link } from "react-router-dom";
-import "./List.css";
-import Pagination from "../Pagination/Pagination";
+import { useState } from "react";
 import Gender from "../Gender/Gender";
+import Pagination from "../Pagination/Pagination";
 import SearchBar from "../Search/SearchBar";
+import UserList from "../UserList/UserList";
+import "./List.css";
 
-const UserList = ({ totalItems, itemsPerPage }) => {
+const List = ({ totalItems, itemsPerPage }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
   const [gender, setGender] = useState("");
@@ -23,8 +21,14 @@ const UserList = ({ totalItems, itemsPerPage }) => {
         <h1>List of Users</h1>
 
         <SearchBar setSearchTerm={setSearchTerm} />
+
         <Gender setGender={setGender} gender={gender} />
-        <UserList />
+
+        <UserList
+          searchTerm={searchTerm}
+          gender={gender}
+          currentPage={currentPage}
+        />
 
         <Pagination
           setCurrentPage={setCurrentPage}
@@ -37,4 +41,4 @@ const UserList = ({ totalItems, itemsPerPage }) => {
   );
 };
 
-export default UserList;
+export default List;

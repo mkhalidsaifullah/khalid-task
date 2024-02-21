@@ -1,18 +1,17 @@
 
 .user-avatar-container {
-    display: flex;
-    justify-content: center; /* Center the avatar horizontally */
-    align-items: center; /* Center the avatar vertically */
-    padding: 20px; /* Add some space around the container */
-  }
-  
-  /* Image styling */
-  .user-avatar-container img {
-    width: 150px; /* Set the width of the avatar */
-    height: 150px; /* Set the height of the avatar */
-    border-radius: 50%; /* Make the avatar circular */
-    border: 3px solid #ffffff; /* Add a white border around the avatar */
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
-    object-fit: cover; /* Ensure the image covers the area without being distorted */
-  }
-  
+  display: flex;
+  justify-content: center; /* Center the avatar horizontally */
+  align-items: center; /* Center the avatar vertically */
+  padding: 20px; /* Add some space around the container */
+}
+
+/* Image styling */
+.user-avatar-container img {
+  width: 150px; /* Set the width of the avatar */
+  height: 150px; /* Set the height of the avatar */
+  border-radius: 50%; /* Make the avatar circular */
+  border: 3px solid #ffffff; /* Add a white border around the avatar */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow for depth */
+  object-fit: cover; /* Ensure the image covers the area without being distorted */
+}

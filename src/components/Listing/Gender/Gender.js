@@ -1,5 +1,5 @@
-import React from "react";
 import "./Gender.css";
+
 const Gender = ({ setGender, gender }) => {
   return (
     <>

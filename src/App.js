@@ -1,18 +1,13 @@
-// App.js
-import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import UserList from "./components/Listing/List/List";
-import UserProfile from "./components/Profile/Card/Card";
+import List from "./components/Listing/List/List";
+import Card from "./components/Profile/Card/Card";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route
-          path="/"
-          element={<UserList totalItems={200} itemsPerPage={10} />}
-        />
-        <Route path="/profile" element={<UserProfile />} />
+        <Route path="/" element={<List totalItems={200} itemsPerPage={10} />} />
+        <Route path="/profile" element={<Card />} />
       </Routes>
     </Router>
   );

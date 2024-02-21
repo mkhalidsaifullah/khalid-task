@@ -1,7 +1,11 @@
-import React from "react";
 import "./Pagination.css";
 
-const Pagination = ({ setCurrentPage, currentPage, totalPages,pageNumbers }) => {
+const Pagination = ({
+  setCurrentPage,
+  currentPage,
+  totalPages,
+  pageNumbers,
+}) => {
   return (
     <div className="pagination-buttons">
       {/* Go to first Page Button */}

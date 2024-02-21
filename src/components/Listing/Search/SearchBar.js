@@ -1,6 +1,6 @@
-import React from "react";
 import "./SearchBar.css";
-const SearchBar = ({setSearchTerm}) => {
+
+const SearchBar = ({ setSearchTerm }) => {
   return (
     <>
       <input

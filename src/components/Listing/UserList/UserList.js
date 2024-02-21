@@ -1,7 +1,8 @@
 import axios from "axios";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
-const UserList = ({ gender, currentPage }) => {
+const UserList = ({ gender, currentPage, searchTerm }) => {
   const [users, setUsers] = useState([]);
   useEffect(() => {
     fetchUsers();

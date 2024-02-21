@@ -1,40 +1,58 @@
 
 .container {
-    width: auto;
-    height: 700px;
-    margin: 0px auto;
-    padding: 10px;
-    border: 3px solid #333;
-    background-color: #eee;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
-    border-radius: 10px;
-    /* overflow:visible; */
-    font-size: 20px;
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .container h1 {
-    color: #333; /* Dark text for contrast */
-    margin: 10px 0; /* Spacing above and below the name */
-    text-align: center;
-  }
-  
-  .container p {
-    text-align: center;
-    color: #666; /* Lighter text color for less emphasis */
-  }
-  
-  /* Styling for the country flag and any additional details */
-  .country-flag {
-    align-items: center;
-    margin: 20px 0; /* Spacing around the flag */
-  }
-  
-  /* Google Maps container styling */
-  .map-container {
-    width: 50%; /* Full width of its parent */
-    height: 200px; /* Adjust height as needed */
-    margin-top: 20px; /* Space above the map */
-    align-items: center;
-  }
+  width: auto;
+  height: 700px;
+  margin: 0px auto;
+  padding: 10px;
+  border: 3px solid #333;
+  background-color: #eee;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  /* overflow:visible; */
+  font-size: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.container h1 {
+  color: #333; /* Dark text for contrast */
+  margin: 10px 0; /* Spacing above and below the name */
+  text-align: center;
+}
+
+.container p {
+  text-align: center;
+  color: #666; /* Lighter text color for less emphasis */
+}
+
+/* Styling for the country flag and any additional details */
+
+.country-flag-container {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content (if needed) */
+  text-align: center;
+  margin: 20px 0; /* Spacing above and below the container */
+  /* Optional: Add padding, background, etc., to beautify */
+  padding: 10px;
+  /* background-color: #f0f0f0; */ /* Uncomment for background */
+  border-radius: 5px; /* Optional: For rounded corners */
+  width: fit-content; /* Adjust the width to fit its content */
+  margin-left: auto; /* Center the container */
+  margin-right: auto;
+}
+
+.country-flag {
+  /* If you're styling the flag element directly (e.g., an <img> or custom component) */
+  width: 50px; /* Adjust based on the size of your flag */
+  height: auto; /* Maintain aspect ratio */
+  /* Additional styling for the flag itself */
+}
+
+/* Google Maps container styling */
+.map-container {
+  width: 50%; /* Full width of its parent */
+  height: 200px; /* Adjust height as needed */
+  margin-top: 20px; /* Space above the map */
+  align-items: center;
+}
