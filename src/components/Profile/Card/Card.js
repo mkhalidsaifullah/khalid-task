@@ -1,25 +1,17 @@
 // UserProfile.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, useLocation } from "react-router-dom";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import CountryFlag from "react-country-flag";
-import UserAvatar from "./UserAvatar.js";
-import "../styling/UserProfile.css";
+import "./Card.css";
+import Container from "../Icons/Container.js";
+import UserAvatar from "../Avatar/UserAvatar";
 
 const UserProfile = () => {
-  const { userId } = useParams();
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    const fetchUser = async () => {
-      const response = await axios.get(
-        `https://randomuser.me/api/?uuid=${userId}`
-      );
-      setUser(response.data.results[0]);
-    };
-    fetchUser();
-  }, [userId]);
+  const { state } = useLocation();
+  const user = state.user;
+  console.log(user);
 
   if (!user) return <div>Loading...</div>;
 
@@ -36,12 +28,9 @@ const UserProfile = () => {
   return (
     <div>
       <div className="container">
-        <UserAvatar />
+        <UserAvatar imageUrl={user.picture.large} />
+        <Container user={user} />
 
-        <p>Hi, My Name is</p>
-        <h1>
-          {user.name.first} {user.name.last}
-        </h1>
         <CountryFlag
           className="country-flag"
           countryCode={user.nat}
