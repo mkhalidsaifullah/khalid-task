@@ -1,0 +1,16 @@
+/* UserProfile.css */
+.profile-details {
+    margin-bottom: 20px;
+  }
+  
+  .flag {
+    display: inline-block;
+    margin-right: 10px;
+  }
+  
+  .map-container {
+    width: 100%;
+    height: 400px;
+    margin-top: 20px;
+  }
+  

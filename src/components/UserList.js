@@ -1,104 +1,102 @@
+// src/components/UserList.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "../styling/UserList.css";
 import { Link } from "react-router-dom";
+import "../styling/UserList.css"; // Assume you've created basic styles
 
-const UserList = () => {
+const UserList = ({ totalItems, itemsPerPage }) => {
   const [users, setUsers] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [genderFilter, setGenderFilter] = useState(
-    localStorage.getItem("genderFilter") || ""
-  );
   const [searchTerm, setSearchTerm] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
+  const [gender, setGender] = useState("");
+  const totalPages = Math.ceil(totalItems / itemsPerPage);
 
   useEffect(() => {
-    localStorage.setItem("genderFilter", genderFilter);
     fetchUsers();
-  }, [currentPage, genderFilter]);
-
-  useEffect(() => {
-    const filteredUsers = users.filter((user) =>
-      `${user.name.first} ${user.name.last}`
-        .toLowerCase()
-        .includes(searchTerm.toLowerCase())
-    );
-    setUsers(filteredUsers);
-  }, [searchTerm]);
+  }, [currentPage, gender]);
 
   const fetchUsers = async () => {
-    setIsLoading(true);
-    try {
-      let url = `https://randomuser.me/api/?page=${currentPage}&results=10&gender=${genderFilter}`;
-      const response = await axios.get(url);
-      setUsers(response.data.results);
-    } catch (error) {
-      console.error("Error fetching users:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    const resultsPerPage = 10;
+    const apiURL = `https://randomuser.me/api/?page=${currentPage}&results=${resultsPerPage}&gender=${gender}`;
+    const response = await axios.get(apiURL);
+    setUsers(response.data.results);
   };
 
-  const handleGenderChange = (e) => {
-    setGenderFilter(e.target.value);
-    setCurrentPage(1); // Reset to first page on filter change
-  };
-
-  const handleSearchChange = (e) => {
-    setSearchTerm(e.target.value);
-  };
-
-  const handlePageChange = (direction) => {
-    setCurrentPage((prev) => prev + direction);
-  };
-
+  const pageNumbers = [];
+  for (let i = 1; i <= totalPages; i++) {
+    pageNumbers.push(i);
+  }
   return (
-    <div className="container">
-      <h1 className="header">User Listing</h1>
-      {isLoading ? (
-        <p>Loading...</p>
-      ) : (
-        <>
-          <div className="filter-section">
-            <label>
-              Filter by Gender:
-              <select onChange={handleGenderChange} value={genderFilter}>
-                <option value="">All</option>
-                <option value="male">Male</option>
-                <option value="female">Female</option>
-              </select>
-            </label>
-            <input
-              type="text"
-              placeholder="Search by name..."
-              value={searchTerm}
-              onChange={handleSearchChange}
-            />
-          </div>
-
-          <ul className="user-list">
-            {users.map((user, index) => (
-              <li key={index}>
+    <div>
+      <div className="container">
+        <h1>List of Users</h1>
+        <input
+          type="text"
+          placeholder="Search by name..."
+          onChange={(e) => setSearchTerm(e.target.value)}
+          className="search-text"
+        />
+        <select
+          className="gender-text"
+          onChange={(e) => setGender(e.target.value)}
+          value={gender}
+        >
+          <option value="">All</option>
+          <option value="male">Male</option>
+          <option value="female">Female</option>
+        </select>
+        <ul>
+          {users
+            .filter((user) =>
+              `${user.name.first} ${user.name.last}`
+                .toLowerCase()
+                .includes(searchTerm.toLowerCase())
+            )
+            .map((user) => (
+              <li key={user.login.uuid}>
                 <Link to={`/profile/${user.login.uuid}`}>
-                  {" "}
-                  {/* Use a unique identifier */}
                   {user.name.first} {user.name.last} - {user.gender}
                 </Link>
               </li>
             ))}
-          </ul>
+        </ul>
+        {/* Go to first Page Button */}
+        <button onClick={() => setCurrentPage(1)} disabled={currentPage === 1}>
+          First
+        </button>
+        <button
+          onClick={() => setCurrentPage(currentPage - 1)}
+          disabled={currentPage === 1}
+        >
+          Previous
+        </button>
+        {pageNumbers.map((number) => (
+          <button
+            key={number}
+            onClick={() => setCurrentPage(number)}
+            style={{
+              marginRight: "5px",
+              backgroundColor: currentPage === number ? "#c0c0c0" : "",
+            }}
+          >
+            {number}
+          </button>
+        ))}
+        <button
+          onClick={() => setCurrentPage(currentPage + 1)}
+          disabled={currentPage === totalPages}
+        >
+          Next
+        </button>
 
-          <div>
-            <button
-              disabled={currentPage <= 1}
-              onClick={() => handlePageChange(-1)}
-            >
-              Prev
-            </button>
-            <button onClick={() => handlePageChange(1)}>Next</button>
-          </div>
-        </>
-      )}
+        {/* Go to Last Page Button */}
+        <button
+          onClick={() => setCurrentPage(totalPages)}
+          disabled={currentPage === totalPages}
+        >
+          Last
+        </button>
+      </div>
     </div>
   );
 };
