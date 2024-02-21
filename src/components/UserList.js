@@ -10,7 +10,7 @@ const UserList = ({ totalItems, itemsPerPage }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [gender, setGender] = useState("");
   const totalPages = Math.ceil(totalItems / itemsPerPage);
-
+  
   useEffect(() => {
     fetchUsers();
   }, [currentPage, gender]);
@@ -60,6 +60,7 @@ const UserList = ({ totalItems, itemsPerPage }) => {
               </li>
             ))}
         </ul>
+
         {/* Go to first Page Button */}
         <button onClick={() => setCurrentPage(1)} disabled={currentPage === 1}>
           First

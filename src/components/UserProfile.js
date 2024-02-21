@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import CountryFlag from "react-country-flag";
 import UserAvatar from "./UserAvatar.js";
+import "../styling/UserProfile.css";
 
 const UserProfile = () => {
   const { userId } = useParams();
@@ -34,25 +35,30 @@ const UserProfile = () => {
 
   return (
     <div>
-      <div className="box">
+      <div className="container">
         <UserAvatar />
+
+        <p>Hi, My Name is</p>
         <h1>
           {user.name.first} {user.name.last}
         </h1>
         <CountryFlag
+          className="country-flag"
           countryCode={user.nat}
           svg
           style={{ width: "2em", height: "2em" }}
         />
-        <LoadScript googleMapsApiKey="YOUR_API_KEY">
-          <GoogleMap
-            mapContainerStyle={containerStyle}
-            center={center}
-            zoom={10}
-          >
-            <Marker position={center} />
-          </GoogleMap>
-        </LoadScript>
+        <div className="map-container">
+          <LoadScript googleMapsApiKey="YOUR_API_KEY">
+            <GoogleMap
+              mapContainerStyle={{ width: "100%", height: "100%" }}
+              center={center}
+              zoom={10}
+            >
+              <Marker position={center} />
+            </GoogleMap>
+          </LoadScript>
+        </div>
       </div>
     </div>
   );
